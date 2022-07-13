@@ -1,15 +1,16 @@
 name: Docker Image CI
 
-on:
+on: 
   workflow_dispatch:
-    - inputs:
+    inputs:
       command:
-        type: choice
-        default: docker-compose up -d
-        options:
-          - "docker-compose up -d"
-          - "docker-compose up -d --build"
         required: true
+        description: 'command to execute'     
+        default: 'docker-compose up -d' 
+        type: choice
+        options:
+        - docker-compose up -d
+        - docker-compose up -d --build
 jobs:
   build:
     runs-on: self-hosted
