@@ -2,11 +2,18 @@ name: Docker Image CI
 
 on:
   workflow_dispatch:
-    
+    - inputs:
+      command:
+        type: choice
+        default: docker-compose up -d
+        options:
+          - "docker-compose up -d"
+          - "docker-compose up -d --build"
+        required: true
 jobs:
   build:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker-compose up -d --build
+      run: ${{ command }}
