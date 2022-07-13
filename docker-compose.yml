@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  democicd:
+    image: democicd
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:4173
